@@ -15,7 +15,7 @@
   
   :reify ([?/reactome_prot_bio {:ln (:sha-1 "Reactome protein" ?/react_uri)
                                 :ns "ccp" :prefix "P_"}] ;; check with Bill
-          [?/react_uri {:ln (:sha-1 "Reactome ICE identifier" ?/react_uri)
+          [?/react_uri {:ln (:sha-1 "Reactome ICE identifier" ?/react_id)
                                 :ns "ccp" :prefix ""}] ;; check with Bill
           
           )
@@ -40,7 +40,7 @@
                  
                  )
          
-         (:bind (:as (:concat (:str "http://ccp.ucdenver.edu/obo/ext#/REACTOME_") (:str ?/react_id)) ?/react_ice))
+         (:bind (:as (:concat (:str "http://ccp.ucdenver.edu/obo/ext/REACTOME_") (:str ?/react_id)) ?/react_ice))
          (:bind (:as (:iri (:str ?/react_ice)) ?/react_uri))
          
          
