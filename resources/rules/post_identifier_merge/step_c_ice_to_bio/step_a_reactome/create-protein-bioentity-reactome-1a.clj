@@ -14,7 +14,7 @@
 )
   
   :reify ([?/reactome_prot_bio {:ln (:sha-1 "Reactome protein" ?/react_uri)
-                                :ns "ccp" :prefix "P_"}] ;; check with Bill
+                                :ns "ccp" :prefix "B_"}] ;; check with Bill
           [?/react_uri {:ln (:sha-1 "Reactome ICE identifier" ?/react_id)
                                 :ns "ccp" :prefix ""}] ;; check with Bill
           
