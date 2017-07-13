@@ -49,5 +49,32 @@
   :options {:magic-prefixes [["franzOption_logQuery" "franz:yes"]
                              ["franzOption_clauseReorderer" "franz:identity"]]}
 
-          
+  :sparql-string "PREFIX franzOption_memoryLimit: <franz:85g> 
+PREFIX franzOption_memoryExhaustionWarningPercentage: <franz:95> 
+PREFIX franzOption_logQuery: <franz:yes> 
+PREFIX franzOption_clauseReorderer: <franz:identity> 
+PREFIX obo: <http://purl.obolibrary.org/obo/> 
+PREFIX ccp: <http://ccp.ucdenver.edu/obo/ext#> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+SELECT ?react_id ?react_uri ?reactome_id_field 
+WHERE {  GRAPH <http://kabob.ucdenver.edu/ekw/reactome-ice> { 
+ ?prot_record <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ccp.ucdenver.edu/obo/ext#IAO_EXT_EKW_0010007> .  
+ ?prot_record <http://purl.obolibrary.org/obo/BFO_0000051> ?xref_record .  
+ ?xref_record <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ccp.ucdenver.edu/obo/ext#IAO_EXT_EKW_0010090> .  
+ ?xref_record <http://purl.obolibrary.org/obo/BFO_0000051> ?reactome_id_field .  
+ ?reactome_id_field <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ccp.ucdenver.edu/obo/ext#IAO_EXT_EKW_0010011> .  
+ ?reactome_id_field <http://www.w3.org/2000/01/rdf-schema#label> ?react_id .  
+ ?prot_record <http://purl.obolibrary.org/obo/BFO_0000051> ?entity_record .  
+ ?entity_record <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ccp.ucdenver.edu/obo/ext#IAO_EXT_EKW_0010064> .  
+ ?entity_record <http://purl.obolibrary.org/obo/BFO_0000051> ?entity_xref_record .  
+ ?entity_xref_record <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ccp.ucdenver.edu/obo/ext#IAO_EXT_EKW_0010090> .  
+ ?entity_xref_record <http://purl.obolibrary.org/obo/BFO_0000051> ?entity_xref_id_field .  
+ ?entity_xref_id_field <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://ccp.ucdenver.edu/obo/ext#IAO_EXT_EKW_0010018> .  
+ ?entity_xref_id_field <http://www.w3.org/2000/01/rdf-schema#label> ?uniprot_id .  
+ }
+  
+ bind (  concat( str(\"http://ccp.ucdenver.edu/obo/ext/REACTOME_\"@en) ,  str(?react_id) )  AS ?react_ice )  
+ bind ( iri ( str ( str(?react_ice) ) ) AS ?react_uri )  
+}"        
   }
