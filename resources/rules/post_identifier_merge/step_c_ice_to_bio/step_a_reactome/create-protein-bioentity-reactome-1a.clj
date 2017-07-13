@@ -46,10 +46,7 @@
          
          )
   
-  :options {:magic-prefixes [["franzOption_logQuery" "franz:yes"]
-                             ["franzOption_clauseReorderer" "franz:identity"]]}
-
-  :sparql-string "PREFIX franzOption_memoryLimit: <franz:85g> 
+    :sparql-string "PREFIX franzOption_memoryLimit: <franz:85g> 
 PREFIX franzOption_memoryExhaustionWarningPercentage: <franz:95> 
 PREFIX franzOption_logQuery: <franz:yes> 
 PREFIX franzOption_clauseReorderer: <franz:identity> 
@@ -77,4 +74,8 @@ WHERE {  GRAPH <http://kabob.ucdenver.edu/ekw/reactome-ice> {
  bind (  concat( str(\"http://ccp.ucdenver.edu/obo/ext/REACTOME_\"@en) ,  str(?react_id) )  AS ?react_ice )  
  bind ( iri ( str ( str(?react_ice) ) ) AS ?react_uri )  
 }"        
+
+  :options {:magic-prefixes [["franzOption_logQuery" "franz:yes"]
+                             ["franzOption_clauseReorderer" "franz:identity"]]}
+
   }
